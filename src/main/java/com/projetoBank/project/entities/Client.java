@@ -1,35 +1,45 @@
 package com.projetoBank.project.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="tb_user")
-public class User implements Serializable {
+@Table(name = "tb_user")
+public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String endereco;
 	private String name;
+	private String cpf;
 	private String email;
 	private String phone;
 	private String password;
-	
-	public User() {
-		
+
+	@OneToMany(mappedBy = "client")
+	private List<Account> accounts = new ArrayList<>();
+
+	public Client() {
+
 	}
 
-	public User(Long id, String name, String email, String phone, String password) {
+	public Client(Long id, String endereco,String name, String cpf, String email, String phone, String password) {
 		super();
 		this.id = id;
+		this.endereco = endereco;
 		this.name = name;
+		this.cpf = cpf;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
@@ -41,6 +51,14 @@ public class User implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getName() {
@@ -75,6 +93,14 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -88,8 +114,8 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Client other = (Client) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }
