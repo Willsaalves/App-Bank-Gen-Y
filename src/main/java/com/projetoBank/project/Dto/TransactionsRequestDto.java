@@ -1,6 +1,6 @@
 package com.projetoBank.project.Dto;
 
-public class RequestDto {
+public class TransactionsRequestDto {
 
     private Double valor;
     private Long id;

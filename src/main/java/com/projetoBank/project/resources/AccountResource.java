@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projetoBank.project.Dto.RequestDto;
+import com.projetoBank.project.Dto.TransactionsRequestDto;
 import com.projetoBank.project.entities.Account;
 import com.projetoBank.project.repositories.AccountRepository;
 import com.projetoBank.project.services.AccountService;
@@ -22,8 +22,6 @@ import com.projetoBank.project.services.AccountService;
 @RestController
 @RequestMapping(value = "/BankAccounts")
 public class AccountResource {
-
-	private Map<Long, Account> account = new HashMap<>();
 
 	@Autowired
 	private AccountService service;
@@ -45,7 +43,7 @@ public class AccountResource {
 	}
 
 	@PostMapping("/{id}/depositar")
-	public ResponseEntity<String> depositar(@PathVariable Long id, @RequestBody RequestDto request) {
+	public ResponseEntity<String> depositar(@PathVariable Long id, @RequestBody TransactionsRequestDto request) {
 
 		Account account = bankAccountRepository.findById(id).orElse(null);
 
@@ -66,7 +64,7 @@ public class AccountResource {
 	}
 
 	@PostMapping("/{id}/sacar")
-	public ResponseEntity<String> sacar(@PathVariable Long id, @RequestBody RequestDto request) {
+	public ResponseEntity<String> sacar(@PathVariable Long id, @RequestBody TransactionsRequestDto request) {
 
 		Account account = bankAccountRepository.findById(id).orElse(null);
 
@@ -93,7 +91,7 @@ public class AccountResource {
 	}
 
 	@PostMapping("/{id}/transferir")
-	public ResponseEntity<String> transferir(@PathVariable Long id, @RequestBody RequestDto request) {
+	public ResponseEntity<String> transferir(@PathVariable Long id, @RequestBody TransactionsRequestDto request) {
 		// Obtenha a conta de origem
 
 		Account origem = bankAccountRepository.findById(id).orElse(null);
@@ -105,7 +103,7 @@ public class AccountResource {
 		// Obtenha a conta de destino
 
 		Long contaDestinoId = request.getId();
-		Double a = request.getValor();
+		
 
 		Account destino = bankAccountRepository.findById(contaDestinoId).orElse(null);
 		if (destino == null) {

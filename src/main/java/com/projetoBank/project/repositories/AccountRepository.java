@@ -7,4 +7,5 @@ import com.projetoBank.project.entities.Account;
 
 public  interface AccountRepository extends JpaRepository<Account, Long>{
 
+
 }

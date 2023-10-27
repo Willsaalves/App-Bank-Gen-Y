@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Profile;
 import com.projetoBank.project.entities.Account;
 import com.projetoBank.project.entities.Client;
 import com.projetoBank.project.repositories.AccountRepository;
-import com.projetoBank.project.repositories.UserRepository;
+import com.projetoBank.project.repositories.ClientRepository;
 
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 
 	@Autowired
-	private UserRepository userRepository;
+	private ClientRepository userRepository;
 	
 	@Autowired
 	private AccountRepository accountRepository;

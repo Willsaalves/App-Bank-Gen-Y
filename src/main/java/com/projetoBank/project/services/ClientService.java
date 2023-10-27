@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetoBank.project.entities.Client;
-import com.projetoBank.project.repositories.UserRepository;
+import com.projetoBank.project.repositories.AccountRepository;
+import com.projetoBank.project.repositories.ClientRepository;
 
 @Service
-public class UserService {
+public class ClientService {
 	
 	@Autowired
-	private UserRepository repository;
+	private ClientRepository repository;
+	
+	@Autowired AccountRepository accountRepository;
 	
 	public List<Client> findAll(){
 		
@@ -25,4 +28,10 @@ public class UserService {
 		
 		return obj.get();
 	}
+	
+	public Client insert(Client obj) {
+		return repository.save(obj);
+	}
+	
+
 }

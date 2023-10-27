@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projetoBank.project.Dto.AccountRequestDto;
 import com.projetoBank.project.entities.Account;
 import com.projetoBank.project.repositories.AccountRepository;
 
@@ -25,5 +26,7 @@ public class AccountService {
 		
 		return obj.get();
 	}
+	
+
 	
 }
