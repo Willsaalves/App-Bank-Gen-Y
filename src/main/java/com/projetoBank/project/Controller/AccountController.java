@@ -1,4 +1,4 @@
-package com.projetoBank.project.resources;
+package com.projetoBank.project.Controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoBank.project.Dto.TransactionsRequestDto;
-import com.projetoBank.project.entities.Account;
-import com.projetoBank.project.repositories.AccountRepository;
-import com.projetoBank.project.services.AccountService;
+import com.projetoBank.project.Entities.Account;
+import com.projetoBank.project.Repositories.AccountRepository;
+import com.projetoBank.project.Services.AccountService;
 
 @RestController
 @RequestMapping(value = "/BankAccounts")
-public class AccountResource {
+public class AccountController {
 
 	@Autowired
 	private AccountService service;

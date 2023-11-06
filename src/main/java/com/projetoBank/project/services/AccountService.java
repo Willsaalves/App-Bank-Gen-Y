@@ -1,4 +1,4 @@
-package com.projetoBank.project.services;
+package com.projetoBank.project.Services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetoBank.project.Dto.AccountRequestDto;
-import com.projetoBank.project.entities.Account;
-import com.projetoBank.project.repositories.AccountRepository;
+import com.projetoBank.project.Entities.Account;
+import com.projetoBank.project.Entities.Client;
+import com.projetoBank.project.Repositories.AccountRepository;
 
 @Service
 public class AccountService {
@@ -26,7 +27,5 @@ public class AccountService {
 		
 		return obj.get();
 	}
-	
-
 	
 }

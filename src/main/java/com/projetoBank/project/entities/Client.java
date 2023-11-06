@@ -1,4 +1,4 @@
-package com.projetoBank.project.entities;
+package com.projetoBank.project.Entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;

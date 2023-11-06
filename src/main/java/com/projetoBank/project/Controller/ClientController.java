@@ -1,4 +1,4 @@
-package com.projetoBank.project.resources;
+package com.projetoBank.project.Controller;
 
 import java.net.URI;
 import java.util.List;
@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.projetoBank.project.Dto.AccountRequestDto;
-import com.projetoBank.project.entities.Account;
-import com.projetoBank.project.entities.Client;
-import com.projetoBank.project.repositories.AccountRepository;
-import com.projetoBank.project.repositories.ClientRepository;
-import com.projetoBank.project.services.ClientService;
+import com.projetoBank.project.Entities.Account;
+import com.projetoBank.project.Entities.Client;
+import com.projetoBank.project.Repositories.AccountRepository;
+import com.projetoBank.project.Repositories.ClientRepository;
+import com.projetoBank.project.Services.ClientService;
 
 @RestController
 @RequestMapping(value = "/client")
-public class ClientResource {
+public class ClientController {
 
 	@Autowired
 	private ClientService service;
@@ -49,17 +49,6 @@ public class ClientResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@PostMapping
-	public ResponseEntity<Client> createUser(@RequestBody Client request) {
-
-		request = service.insert(request);
-
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(request.getId())
-				.toUri();
-		return ResponseEntity.created(uri).body(request);
-
-	}
-
 	@PostMapping("/createAccount/{id}")
 	public ResponseEntity<?> createAccount(@PathVariable Long id, @RequestBody AccountRequestDto request)
 			throws RelationNotFoundException {
@@ -73,11 +62,13 @@ public class ClientResource {
 		
 		
 		Account account = new Account();
+		
+		
 
 		account.setClient(client);
-		account.setNumeroConta(request.getNumeroConta());
-		account.setSaldo(request.getSaldo());
-		account.setTipoConta(request.getTipoConta());
+		account.setNumeroConta(request.numeroConta());
+		account.setSaldo(request.saldo());
+		account.setTipoConta(request.tipoConta());
 		
 		bankAccountRepository.save(account);
 
